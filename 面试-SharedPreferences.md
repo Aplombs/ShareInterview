@@ -1,4 +1,4 @@
-####登录时怎么保存用户名密码实现下次自动登录
+#### 登录时怎么保存用户名密码实现下次自动登录
 首先，我们要实现记住密码的功能,在Android中，轻量级的数据存储一般使用SharedPreferences，当然你也可以使用其他的数据存储方式。SharedPreferences实现记住密码功能一般遵循以下步骤：
 1. 每次登录时，都检测上次登录是否记住了密码，如果记住了就要从sp里读取账户信息，并自动填写到输入框里
 2. 登录成功后，要检测本次登录是否选择了记住密码，如果为true，则需要把本次登录的帐号信息写到sp里，如果为false，则需要清空sp的key-value
@@ -155,7 +155,7 @@ public class LoginActivity extends AppCompatActivity {
 
 但是，利用sp虽然实现了我们自动登录的需求，但是实际上一般我们不会这么做，因为这样做存在一定的安全隐患，我们可以在sp中存取数据时进行加密解密，这样的话安全性会相对高一些。当然这里还有更为安全的一种做法：TOKEN思想，也就是说我们在登录的时候，服务器给我们返回一个token值，我们把这个值保存到起来，下次请求接口时，带上这个 token ，服务端判断这个token是否有效或过期，返回对应的错误码，如果本地不存在 token，就是没有登录过，跳转登陆。
 
-####如果sp只存储用户名，比如三个用户都存在sp里，取出来怎么取？存进去怎么存？你怎么区分 ？
+#### 如果sp只存储用户名，比如三个用户都存在sp里，取出来怎么取？存进去怎么存？你怎么区分 ？
 利用SharedPreferences存储数据，首先我们要获取一个 SharedPreferences实例，我通常一般会使用PreferenceManager.getDefaultSharedPreferences(this);来获取这个实例， 我们知道SharedPreferences有如下**操作模式：**
 * mode指定为MODE_PRIVATE(或0)，则该配置文件只能被自己的应用程序访问。
 * mode指定为MODE_WORLD_READABLE，则该配置文件除了自己访问外还可以被其它应该程序读取。
